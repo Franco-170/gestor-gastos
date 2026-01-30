@@ -18,6 +18,8 @@ function menu() {
       case 5:
         continuar = false;
         break;
+      default:
+        alert("El numero ingresado no es correcto");
     }
   }
 }
