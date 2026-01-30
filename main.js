@@ -10,7 +10,7 @@ function menu() {
         listarGastos(gastos);
         break;
       case 3:
-        calcularTotal();
+        calcularTotal(gastos);
         break;
       case 4:
         eliminarGastos();
@@ -62,5 +62,11 @@ function listarGastos(gastos) {
       `Id: ${gasto.id} | Descripcion: ${gasto.descripcion} | Monto: ${gasto.monto} | Categoria: ${gasto.categoria}`,
     );
   }
+}
+function calcularTotal(gastos) {
+  let total = gastos.reduce((acc, gasto) => {
+    return (acc += gasto.monto);
+  }, 0);
+  console.log(`El total es de: ${total}`);
 }
 menu();
