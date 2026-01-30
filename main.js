@@ -7,7 +7,7 @@ function menu() {
         agregarGastos(gastos);
         break;
       case 2:
-        listarGastos();
+        listarGastos(gastos);
         break;
       case 3:
         calcularTotal();
@@ -23,8 +23,10 @@ function menu() {
     }
   }
 }
+
 const gastos = [];
 let contador = 1;
+
 function agregarGastos(gastos) {
   let descripcion = prompt("Agrega una descripcion");
   let monto = parseInt(prompt("Agrega el monto"));
@@ -48,5 +50,17 @@ function agregarGastos(gastos) {
     categoria: categoria,
   });
   contador++;
+}
+
+function listarGastos(gastos) {
+  if (gastos === null) {
+    alert("No hay registro de gastos");
+    return;
+  }
+  for (let gasto of gastos) {
+    console.log(
+      `Id: ${gasto.id} | Descripcion: ${gasto.descripcion} | Monto: ${gasto.monto} | Categoria: ${gasto.categoria}`,
+    );
+  }
 }
 menu();
