@@ -13,7 +13,7 @@ function menu() {
         calcularTotal(gastos);
         break;
       case 4:
-        eliminarGastos();
+        gastos = eliminarGastos(gastos);
         break;
       case 5:
         continuar = false;
@@ -24,7 +24,7 @@ function menu() {
   }
 }
 
-const gastos = [];
+let gastos = [];
 let contador = 1;
 
 function agregarGastos(gastos) {
@@ -53,7 +53,7 @@ function agregarGastos(gastos) {
 }
 
 function listarGastos(gastos) {
-  if (gastos === null) {
+  if (gastos.length === 0) {
     alert("No hay registro de gastos");
     return;
   }
@@ -63,10 +63,26 @@ function listarGastos(gastos) {
     );
   }
 }
+
 function calcularTotal(gastos) {
   let total = gastos.reduce((acc, gasto) => {
     return (acc += gasto.monto);
   }, 0);
   console.log(`El total es de: ${total}`);
+}
+
+function eliminarGastos(gastos) {
+  let encontrado = false;
+  let eliminar = parseInt(prompt("Ingresa el id"));
+  for (let gasto of gastos) {
+    if (eliminar === gasto.id) {
+      encontrado = true;
+      return gastos.filter((gasto) => gasto.id !== eliminar);
+    }
+  }
+  if (!encontrado) {
+    alert("Id no encontrado");
+    return gastos;
+  }
 }
 menu();
