@@ -1,7 +1,11 @@
 function menu() {
   let continuar = true;
   while (continuar) {
-    let numero = parseInt(prompt("Ingresa un numero"));
+    let numero = parseInt(
+      prompt(
+        "Ingresa un numero: (1: Agregar gastos | 2: Listar gastos | 3: Calcular total | 4: Eliminar gastos | 5: Salir)",
+      ),
+    );
     switch (numero) {
       case 1:
         agregarGastos(gastos);
